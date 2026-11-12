@@ -8,18 +8,11 @@ description: >-
 
 # 四大维度
 
-数字只来自本仓库命令的标准输出。不要心算门槛，不要补全缺失字段。
-
-在仓库根目录执行：
+按仓库根目录的 `AGENTS.md` 执行。命令是：
 
 ```bash
-python -m fourdim recommend
-python -m fourdim analyze 600519
-python -m fourdim analyze 贵州茅台
+python3 -m fourdim recommend
+python3 -m fourdim analyze 600519
 ```
 
-`recommend` 写 `daily/当天日期.md`，并打印当天最多 3 只观察名单。`analyze` 解析一只股票，通过和不通过都要展示。
-
-把标准输出作为回答正文。命令失败时，只说明失败原因，不另给股票。
-
-阈值在 `fourdim/rules.py`。用户没有要求改代码时，不要在对话里放宽门槛。
+任何模型都用这两条命令。不要改门槛，不要编造财务数字。

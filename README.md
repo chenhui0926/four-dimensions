@@ -2,17 +2,32 @@
 
 按盈利、效率、财务健康、估值四步筛 A 股。每天早上给出最多 3 只观察名单，也可以解析一只股票。结果不是买卖建议。
 
-## 别人怎么用
+## 怎么使用
+
+先装一次：
 
 ```bash
 git clone https://github.com/chenhui0926/four-dimensions.git
 cd four-dimensions
 python3 -m pip install -r requirements.txt
-python3 -m fourdim recommend
-python3 -m fourdim analyze 600519
 ```
 
-在 Cursor 里打开这个仓库后，直接说「今天推荐 3 只」或「用四大维度解析 600519」。技能在 `.cursor/skills/four-dimensions/`。想在别的项目里触发，把该目录复制到 `~/.cursor/skills/four-dimensions`。
+当天最多 3 只：
+
+```bash
+python3 -m fourdim recommend
+```
+
+解析一只股票，代码或名称都可以：
+
+```bash
+python3 -m fourdim analyze 600519
+python3 -m fourdim analyze 贵州茅台
+```
+
+这两条命令就是全部用法。ChatGPT、Claude、Gemini、Copilot、Cursor、Codex 或其他能执行命令的助手，都跑它们，再把终端输出原样给你。助手不能自己编财务数字。仓库里的 `AGENTS.md` 写的是同一份要求。
+
+也可以直接对助手说「今天推荐 3 只」或「用四大维度解析 600519」。
 
 工作日北京时间 08:00，GitHub Action 会跑同一条 `recommend`，把结果提交到 `daily/`。东方财富有时会拒绝 GitHub 服务器的访问，那时在自己电脑上跑命令即可，规则相同。
 
