@@ -1,0 +1,29 @@
+name: daily
+
+on:
+  schedule:
+    # 北京时间工作日 08:00。GitHub 的定时任务偶发推迟。
+    - cron: "0 0 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recommend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - run: python -m fourdim recommend
+      - name: publish the watchlist
+        run: |
+          git config user.name "fourdim"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add daily data/picks.json
+          git diff --staged --quiet || git commit -m "update morning watchlist" 
+          git push

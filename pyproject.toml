@@ -1,0 +1,12 @@
+[project]
+name = "fourdim"
+version = "0.1.0"
+description = "A-share four-dimension fundamental watchlist"
+requires-python = ">=3.9"
+dependencies = ["akshare>=1.16", "pandas>=2.0", "requests>=2.28"]
+
+[project.scripts]
+fourdim = "fourdim.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["fourdim*"]
